@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function summ(a, b) {
+            return a + b;
+        }
+
+        function dif(a, b) {
+            return a - b;
+        }
+
+        function mul(a, b) {
+            return a * b;
+        }
+
+        function div(a, b) {
+            return a / b;
+        }
+
+        function mathOperation(arg1, arg2, operation) {
+            switch (operation) {
+                case "+":
+                    alert(summ(arg1, arg2));
+                    brake;
+                case "-":
+                    alert(dif(arg1, arg2));
+                    brake;
+                case "*":
+                    alert(mul(arg1, arg2));
+                    brake;
+                case "/":
+                    alert(div(arg1, arg2));
+                    brake;
+                default:
+                    alert("Вы ввели неверный оператор")
+            }
+        }
+
+        mathOperation(+prompt("Введите первое число"), +prompt("Введите второе число"), prompt("Введите оператор"));
+
+    </script>
+
+</body>
+
+</html>
