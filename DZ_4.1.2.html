@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //es5 синтаксис
+
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Post.prototype.edit = function (enteringText) {
+            this.text = enteringText;
+        }
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function () {
+            this.highlighted = true;
+        }
+
+
+        let attachedPost1 = new AttachedPost('Bill', 'Hi Alice!', 'December 17, 1995 03:24:00');
+        console.log(attachedPost1.author, attachedPost1.text, attachedPost1.date, attachedPost1.highlighted);
+        attachedPost1.edit('Goodbue Alice!');
+        console.log(attachedPost1.author, attachedPost1.text, attachedPost1.date, attachedPost1.highlighted);
+        attachedPost1.makeTextHighlighted();
+        console.log(attachedPost1.highlighted);
+
+
+        //es6 синтаксис
+        class Post2 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit(enteringText) {
+                this.text = enteringText;
+            }
+        }
+
+        class AttachedPost2 extends Post2 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+
+            makeTextHighlighted() {
+                this.highlighted = true;
+            }
+        }
+
+        let attachedPost2 = new AttachedPost2('Bill', 'Hi Alice!', 'December 17, 1995 03:24:00');
+        console.log(attachedPost2.author, attachedPost2.text, attachedPost2.date, attachedPost2.highlighted);
+        attachedPost2.edit('Goodbue Alice!');
+        console.log(attachedPost2.author, attachedPost2.text, attachedPost2.date, attachedPost2.highlighted);
+        attachedPost2.makeTextHighlighted();
+        console.log(attachedPost2.highlighted);
+
+    </script>
+</body>
+
+</html>
